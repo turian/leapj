@@ -22,14 +22,25 @@ define(['visuals', 'pubsub', 'gestures', 'user'], function(visuals, pubsub, gest
 			else scope.visualizer.stop();
 		}
 
+        var stem_to_leap = {
+            "rhythm": "",
+            "synth": "c",
+            "layer1": "l",
+            "layer2": "r",
+        }
+
 		function applyControlMessage(msg) {
-			var user = msg.user;
-			if (!user.isControllingStem(scope.stem))
-				return;
-			scope.$apply(function(){
-				gestures.processMessage(msg, scope.stem);
-				applyUser(user);
-			});
+            if (stem_to_leap[scope.stem.key] == msg.user.alias) {
+                console.log(msg.user);
+                console.log(scope.stem);
+    			var user = msg.user;
+//    			if (!user.isControllingStem(scope.stem))
+//    				return;
+    			scope.$apply(function(){
+    				gestures.processMessage(msg, scope.stem);
+    				applyUser(user);
+    			});
+            }
 		}
 
 		function removeUser() {
