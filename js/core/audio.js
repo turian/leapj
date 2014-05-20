@@ -56,7 +56,6 @@ define(['jquery', 'exports'], function($, exports){
 	};
 
 	Stem.prototype.setupMiddleware = function(source) {
-
 		// create adjustment filters
 		this.gainNode = api.createGain();           // volume control
 		this.panNode = api.createPanner();          // 3D pan filter
